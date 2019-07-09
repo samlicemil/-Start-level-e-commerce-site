@@ -1,0 +1,121 @@
+﻿@using Abc.MvcWebUI.Entity;
+@model Product
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container pb-5 mt-5" id="product-details" style="background-color: azure; ">
+
+    <div class="row">
+        <div class="col-md-6 shadow  bg-white rounded">
+            <img src="~/Upload/@Model.Image" class="img-fluid rounded" />
+        </div>
+        <div class="col-md-6  bg-white rounded">
+            <div class="row">
+                <div class="col-md-12 ml-3">
+                    <h1>@Model.Name</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 ml-3 mt-1">
+                    @if (Model.IsApproved == true)
+                    {
+                    <span class="badge badge-primary">in Stock</span>
+                    }
+                    else
+                    {
+                    <span class="badge badge-danger">Out of stock</span>
+                    }
+                    
+                    <span class="product-number">#125685</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 ml-3 mt-1">
+                    <div id="description">
+                        @Model.Description
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5 ml-3 mt-3 ">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span class="badge badge-primary">53</span>
+                </div>
+
+                <div id="write-review" class="col-md-4 mt-3">
+                    <a href="#">
+                        Write a review
+                    </a>
+
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-12 ml-3 mt-3">
+                    <h4 id="product-price">@Model.Price TL</h4>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 ml-3 mt-1">
+
+
+                    @using(Html.BeginForm("AddToCart","Cart")) 
+                    {
+                    
+                    @Html.HiddenFor(i=>i.Id)
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-cart-plus"></i>
+                        Add To Cart
+                    </button>
+
+                    }
+
+
+
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <div class="bd-example bd-example-tabs">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="Description-tab" data-toggle="tab" href="#Description" role="tab" aria-controls="Description" aria-selected="true">Detay</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="Payment-tab" data-toggle="tab" href="#Payment" role="tab" aria-controls="Payment" aria-selected="false">Ödeme Yöntemleri</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="Comment-tab" data-toggle="tab" href="#Comment" role="tab" aria-controls="Comment" aria-selected="false">Yorumlar</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="Description" role="tabpanel" aria-labelledby="Description-tab">
+                        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                    </div>
+                    <div class="tab-pane fade" id="Payment" role="tabpanel" aria-labelledby="Payment-tab">
+                        <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+                    </div>
+                    <div class="tab-pane fade" id="Comment" role="tabpanel" aria-labelledby="Comment-tab">
+                        <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>    

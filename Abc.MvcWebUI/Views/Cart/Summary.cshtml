@@ -1,0 +1,25 @@
+﻿@model Abc.MvcWebUI.Models.Cart
+
+<ul class="navbar-nav my-2 my-lg-0 pt-2">
+    <li class="nav-item">
+
+        @if (User.IsInRole("admin"))
+        {
+            <a class="btn btn-outline-success btn-sm" href="@Url.Action("Index","Order")">
+                <i class="fas fa-cart-plus"> </i>
+                <span>Orders</span>
+
+            </a>
+
+        }
+        else
+        {
+            <a class="btn btn-outline-success btn-sm" href="@Url.Action("Index","Cart")">
+                <i class="fas fa-cart-plus"> </i>
+                (@Model.CartLines.Count)
+
+            </a>
+
+        }
+    </li>
+</ul>

@@ -1,0 +1,31 @@
+﻿@using Abc.MvcWebUI.Models;
+@model IEnumerable<ProductModel>
+@{
+    if (User.IsInRole("admin"))
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+
+    ViewBag.Title = "Index";
+}
+
+@if (User.IsInRole("admin"))
+{
+    <div class="container-fluit container pb-5">
+        @Html.Partial("_ProductList", Model)
+
+    </div>
+}
+<div class="container-fluit">
+
+    <div class="jumbotron">
+        <div class="container pb-5">
+            <h1 class="display-4">Welcome</h1>
+            <a class="btn btn-primary btn-lg" href="List" role="button">Start shopping</a>
+        </div>
+    </div>
+</div>
+<div class="container pb-5">
+    @Html.Partial("_ProductList", Model)
+
+</div>

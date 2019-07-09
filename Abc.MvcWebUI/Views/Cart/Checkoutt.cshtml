@@ -1,0 +1,87 @@
+﻿@model Abc.MvcWebUI.Models.ShippingDetails
+@{
+    ViewBag.Title = "Checkoutt";
+}
+
+<div class="container pb-5" >
+    <h2 style="color:azure ">Login Address</h2>
+
+
+    @using (Html.BeginForm())
+    {
+
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal border border-success p-3 " style="width: 400px; background-color: azure;">
+        <h4>Address Information</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+            <div class="col-md-10">
+                <span class="badge-danger"> @User.Identity.Name</span>
+               
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressName, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AddressName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AddressName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.District, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.District, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.District, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Neighborhood, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Neighborhood, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Neighborhood, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.PostCode, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PostCode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PostCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add Address" class="btn btn-default btn-outline-primary" />
+            </div>
+        </div>
+    </div>
+    }
+
+
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+
+

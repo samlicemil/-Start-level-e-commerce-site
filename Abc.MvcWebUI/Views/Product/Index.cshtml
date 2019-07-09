@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Abc.MvcWebUI.Entity.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container pb-5">
+    <h2>Products Management Panel </h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create",null, new { @class = "btn btn-outline-primary" })
+    </p>
+    <table class="table table-striped table-bordered " style="background-color: azure">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isHome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsApproved)
+            </th>
+            <th style="width: 150px"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stock)
+                </td>
+                <td>
+                    <img src="/Upload/@item.Image" style="width:50px;" />
+                </td>
+                <td>
+                    @if (item.isHome)
+                    {
+                        <i class="far fa-check-square text-success" style="text-align: center"></i>
+                    }
+                    else
+                    {
+                        <i class="far fa-window-close text-danger "></i>
+
+                    }
+                </td>
+                <td>
+                    @if (item.IsApproved)
+                    {
+                        <i class="far fa-check-square text-success"></i>
+                    }
+                    else
+                    {
+                        <i class="far fa-window-close text-danger"></i>
+
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id } ,new { @class = "btn btn-outline-success btn-sm"}) 
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-outline-danger btn-sm"})
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

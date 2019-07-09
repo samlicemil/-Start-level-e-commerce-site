@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Complated";
+}
+
+
+<div class="container pb-5">
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Well done!</h4>
+        <p>
+            Aww yeah, you successfully.
+            Your order has been received. It will be delivered to your address as soon as possible.
+        </p>
+        <hr>
+        @using (Html.BeginForm("List", "Home"))
+        {
+
+            <button type="submit" class="btn btn-outline-success btn-sm"><i class="fas fa-cart-arrow-down">Back To Shop</i></button>
+        }
+    </div>
+</div>

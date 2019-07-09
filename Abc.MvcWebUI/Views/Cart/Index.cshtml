@@ -1,0 +1,103 @@
+﻿@using Abc.MvcWebUI.Models
+@model Abc.MvcWebUI.Models.Cart
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container pb-5" style="background-color: azure">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Shopping Cart</h2>
+
+            @if (Model.CartLines.Count > 0)
+            {
+                <table class="table table-striped table-bordered" style="background-color: azure">
+
+                    <thead>
+                        <tr>
+                            <td style="width: 8%"></td>
+                            <td style="width: 8%">Quantity</td>
+                            <td>Product Name</td>
+                            <td>Price</td>
+                            <td style="width: 15%">Sub Total</td>
+                            <td style="width: 15%"></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.CartLines)
+                        {
+                            <tr>
+                                <td>
+                                    <img src="/Upload/@item.Product.Image" style="width: 50px;" />
+                                </td>
+                                <td>
+                                    @item.Quantity
+                                </td>
+                                <td>
+                                    @item.Product.Name
+                                </td>
+                                <td>
+                                    @item.Product.Price
+                                </td>
+                                <td>
+                                    @((item.Quantity * item.Product.Price).ToString("C"))
+                                </td>
+                                <td>
+                                    @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                                    {
+                                        @Html.Hidden("Id", item.Product.Id)
+                                        <button type="submit" class="btn btn-outline-danger btn-sm "><i class="fas fa-trash-alt">Delete</i></button>
+                                    }
+
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4">
+                                @using (Html.BeginForm("List", "Home"))
+                                {
+
+                                    <button type="submit" class="btn btn-outline-success btn-sm" ><i class="fas fa-cart-arrow-down">Back To Shop</i></button>
+                                }
+                            </td>
+                            <td>@Model.Total().ToString("C")</td>
+                            <td>
+
+                            @using (Html.BeginForm("cclear","Cart"))
+                            {
+                                <button type="submit" class="btn btn-outline-danger btn-sm">
+                                    <i class="fas fa-trash-alt">
+                                       
+                                        Delete All
+                                    </i>
+                                </button>
+                            }
+                            </td>
+
+                        </tr>
+                    </tfoot>
+
+
+                </table>
+
+                <a  class="btn btn-success btn-sm border-success" href="/Cart/Checkoutt"><i class="fas fa-shipping-fast">
+                    Complete Shopping   </i></a>
+
+
+
+
+            }
+            else
+            {
+                <div class="alert alert-warning" role="alert">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    There are no products in your shopping cart
+                </div>
+            }
+        </div>
+    </div>
+</div>
